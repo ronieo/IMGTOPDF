@@ -34,14 +34,14 @@
       </footer>
       <!--HTML문서에 상호작용 추가를 위한 script-->
       <script>
-        let fileUpload = document.getElementById('file-upload');
-        let selectedFiles = document.querySelector('#selected-files code');
-        let submitButton = document.querySelector('input[type=submit]');
+        const fileUpload = document.getElementById('file-upload');
+        const selectedFiles = document.querySelector('#selected-files code');
+        const submitButton = document.querySelector('input[type=submit]');
 
-        let filenames = ''
+        const filenames = ''
         fileUpload.onchange = function () {
           filenames = ''
-          for (let file of this.files) {
+          for (const file of this.files) {
             filenames += file.name
             filenames += ','
           }
