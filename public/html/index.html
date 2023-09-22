@@ -1,0 +1,56 @@
+<DOCTYPE HTML>
+  <html>
+
+  <head>
+    <title>IMG-to-PDF Converter</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="YOUR NAME">
+    <meta name="description" content="Easily convert any set of images to PDFs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--스타일 문서 호출-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1><a href='/'>IMG TO PDF CONVERTER</a></h1>
+      </header>
+      <article>
+        <p class='title'>쉽게 PNG, JPG 이미지를 변환해 보세요!! </p>
+        <!--POST요청 /upload경로로 전송/서버로 이미지 수신 하기위한 요소 enctype='multipart/form-data'-->
+        <form method='post' action='/upload' enctype='multipart/form-data'>
+          <!--기기에서 파일을 가져오는 input/name='images'속성으로 multer에서 이미지 식별에 사용/accept='.png, .jpg'여러이미지 파일 허용하는 속성-->
+          <input id='file-upload' type='file' name='images' accept='.png, .jpg' multiple />
+          <p><label for='file-upload'>파일선택</label></p>
+          <p id='selected-files'><code> </code> </p>
+          <!--제출버튼: 파일 업로드 요청 트리거에 사용-->
+          <p><input type='submit' value='upload' /></p>
+        </form>
+      </article>
+      <footer>
+        <p><code>copyright &copy; IMG2PDF 2023</code></p>
+      </footer>
+      <!--HTML문서에 상호작용 추가를 위한 script-->
+      <script>
+        let fileUpload = document.getElementById('file-upload');
+        let selectedFiles = document.querySelector('#selected-files code');
+        let submitButton = document.querySelector('input[type=submit]');
+
+        let filenames = ''
+        fileUpload.onchange = function () {
+          filenames = ''
+          for (let file of this.files) {
+            filenames += file.name
+            filenames += ','
+          }
+          selectedFiles.parentElement.style.display = 'block'
+          selectedFiles.textContent = filenames
+          submitButton.style.display = 'inline-block';
+        }
+      </script>
+    </main>
+  </body>
+
+  </html>
