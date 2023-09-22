@@ -1,0 +1,36 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   p Welcome to #{title}
+
+//- Convert to PDF: 이미지요소에서 이미지 파일명 추출 후 서버에 POST요청으로 전송
+
+doctype html
+html
+  head
+    title IMG-to-PDF Converter
+    meta(charset='UTF-8')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/index-view.css')
+    script(type='module' src='/javascripts/sort.js' defer)
+  body
+    main
+      header
+        h1
+          a(href='/') IMGTOPDF
+      article
+        p
+          a(href='/new') New +
+        div
+          each image in images
+           img(src=`/images/${image}` data-name=image width='200' height='200')
+        p
+          a(class='convert')
+            span(class='text') PDF로 변환 &rarr;
+            span(class='loader')
+        p
+          a(class='download' download) 다운로드 &darr;
+      footer
+        p
+          code copyright &copy; IMG2PDF 2023
