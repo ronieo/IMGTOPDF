@@ -9,10 +9,10 @@ const { unlink } = require("fs/promises");
 router.get("/new", function (req, res, next) {
   // 세션에 저장된 파일을 삭제
   // @ts-ignore
-  let filenames = req.session.imagefiles;
+  const filenames = req.session.imagefiles;
 
-  let deleteFiles = async (paths) => {
-    let deleting = paths.map((file) =>
+  const deleteFiles = async (paths) => {
+    const deleting = paths.map((file) =>
       unlink(path.join(__dirname, "..", `/public/images/${file}`))
     );
     await Promise.all(deleting);
@@ -31,11 +31,11 @@ router.get("/new", function (req, res, next) {
 const PDFDocument = require("pdfkit");
 // @ts-ignore
 router.post("/pdf", function (req, res, next) {
-  let body = req.body;
+  const body = req.body;
 
   // 새 pdf 생성
-  let doc = new PDFDocument({ size: "A4", autoFirstPage: false });
-  let pdfName = "pdf-" + Date.now() + ".pdf";
+  const doc = new PDFDocument({ size: "A4", autoFirstPage: false });
+  const pdfName = "pdf-" + Date.now() + ".pdf";
 
   // pdf를 public/pdf 폴더에 저장
   doc.pipe(
@@ -43,7 +43,7 @@ router.post("/pdf", function (req, res, next) {
   );
 
   // pdf 페이지를 만들고 이미지를 추가
-  for (let name of body) {
+  for (const name of body) {
     doc.addPage();
     doc.image(path.join(__dirname, "..", `/public/images/${name}`), 20, 20, {
       width: 555.28,

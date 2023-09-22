@@ -2,23 +2,23 @@
 import Sortable from "./sortable.core.esm";
 
 // 이미지 태그의 컨테이너 요소에 sortablejs 사용
-let list = document.querySelector("div");
+const list = document.querySelector("div");
 // @ts-ignore
-let sort = Sortable.create(list);
+const sort = Sortable.create(list);
 
-let convertButton = document.querySelector("a.convert");
+const convertButton = document.querySelector("a.convert");
 
 // convert 버튼을 클릭한 경우
 // @ts-ignore
 convertButton.onclick = function () {
-  let images = document.querySelectorAll("img");
-  let loader = document.querySelector("span.loader");
-  let convertText = document.querySelector("span.text");
-  let downloadButton = document.querySelector("a.download");
+  const images = document.querySelectorAll("img");
+  const loader = document.querySelector("span.loader");
+  const convertText = document.querySelector("span.text");
+  const downloadButton = document.querySelector("a.download");
 
-  let filenames = [];
+  const filenames = [];
   // 이미지명을 배열로 추출
-  for (let image of images) {
+  for (const image of images) {
     filenames.push(image.dataset.name);
   }
   // 로딩 애니메이션 활성화
