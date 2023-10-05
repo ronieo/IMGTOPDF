@@ -4,17 +4,16 @@
 
 ### 프로젝트 스킬셋
 
-```
-Express
-Express-session
-Jade/Pug
-PDFKit
-Multer
-Sortable.js
-```
+```Express```
+```Express-session```
+```Jade/Pug```
+```PDFKit```
+```Multer```
+```Sortable.js```
+
 
 ### 프로젝트 폴더구조
-
+```
 IMG2PDF
 ├─ bin
 ├─ public
@@ -29,3 +28,4 @@ IMG2PDF
 ├─ package-lock.json
 ├─ package.json
 └─ README.md
+```
